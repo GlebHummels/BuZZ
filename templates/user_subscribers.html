@@ -1,0 +1,34 @@
+<html>
+<head>
+  <title>Subscribers</title>
+<link rel="stylesheet" href='{{ style }}'/>
+</head>
+<body>
+<form id="form" method="post">
+
+
+<center>
+<input id="butt" name="butt" style="visibility: hidden">
+<div style="width: 99%; height: 8%; border: 3px solid white; border-radius: 10px; display: flex; flex-flow: row; font-size: 53px; color: white">
+  <div style="flex: 1" class="inblock" onclick="butt.value = 'news'; form.submit();"><img src="{{ news }}" style="height: 99%"></div>
+  <div style="flex: 1" class="inblock" onclick="butt.value = 'messages'; form.submit();"><img src="{{ messages }}" style="height: 99%"></div>
+  <div style="flex: 1" class="inblock" onclick="butt.value = 'friends'; form.submit();"><img src="{{ friends }}" style="height: 99%"></div>
+  <div style="flex: 1" class="inblock" onclick="butt.value = 'home'; form.submit();"><img src="{{ home }}" style="height: 99%"></div>
+</div>
+</center>
+
+<div onclick="butt.value = 'arrow'; form.submit();"><img src="{{ arrow }}" style="width: 5%; position: absolute; top:15%; left: 1%"></div>
+
+<div style="top: 20%; width:60%; position:absolute; left:20%;">
+{% for i in subscribers_of_user%}
+
+<div onclick="butt.value = 'redirect_{{ i[3] }}'; form.submit();" style="width: 80%; height: 20%; border: 3px solid white; border-radius: 25px; display: flex; flex-flow: row; margin-bottom: 30px">
+<img src="/static/user_photos/{{ i[2] }}" style="width:20%; border-bottom-left-radius: 25px; border-top-left-radius: 25px; position: relative; left: -3px;">
+<div style="display: flex; flex-flow: column; flex: 1"><h2 style="margin: auto">{{ i[0] }}</h2><h4 style="margin: auto">{{ i[1] }}</h4></div></div>
+
+{% endfor %}
+</div>
+
+</form>
+</body>
+</html>

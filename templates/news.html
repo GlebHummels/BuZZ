@@ -1,0 +1,44 @@
+<html>
+<head>
+  <title>News</title>
+<link rel="stylesheet" href='{{ style }}'/>
+<style>
+		.tt {text-align: center; font-size: 30px; font-family: 'Balsamiq Sans';}
+	</style>
+</head>
+<body>
+<form id="form" method="post">
+
+
+<center>
+<input id="butt" name="butt" style="visibility: hidden">
+<div style="width: 99%; height: 8%; border: 3px solid white; border-radius: 10px; display: flex; flex-flow: row; font-size: 53px; color: white">
+  <div style="flex: 1" class="inblock" onclick="butt.value = 'news'; form.submit();"><img src="{{ news }}" style="height: 99%"></div>
+  <div style="flex: 1" class="inblock" onclick="butt.value = 'messages'; form.submit();"><img src="{{ messages }}" style="height: 99%"></div>
+  <div style="flex: 1" class="inblock" onclick="butt.value = 'friends'; form.submit();"><img src="{{ friends }}" style="height: 99%"></div>
+  <div style="flex: 1" class="inblock" onclick="butt.value = 'home'; form.submit();"><img src="{{ home }}" style="height: 99%"></div>
+</div>
+</center>
+
+<div style="position:absolute; top: 20%; left: 25%">
+{% for i in news_list %}
+
+<div style="width: 60%; top: 20%; height: 50%; border: 3px solid white; border-radius: 20px; left: 25%; display: inline-block; margin: 22px">
+		<div style="display: inline-block; border-bottom: 3px solid white; width: 100%">
+			<div style="border-right: 3px solid white; float: left; display: block" class="tt">
+				<img src="{{ i[4] }}" style="width: 100px; border-top-left-radius: 20px">
+			</div>
+			<div class="tt" style="display: block; font-size: 40px;"> {{ i[3] }}</div>
+		</div>
+		<div style="width: 100%; margin: 10px" class="tt">
+			{{ i[0] }} <br> 
+		</div>
+		<center><div style="color: white; font-size: 23px; right: 10%; bottom: 2%;"> {{ i[1] }} </div></center>
+	</div>
+
+{% endfor %}
+</div>
+
+</form>
+</body>
+

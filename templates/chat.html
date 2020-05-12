@@ -1,0 +1,59 @@
+<html>
+<head>
+  <title>Messages</title>
+<link rel="stylesheet" href='{{ style }}'/>
+</head>
+<body>
+<form id="form" method="post">
+
+
+<center>
+<input id="butt" name="butt" style="visibility: hidden">
+<div style="width: 99%; height: 8%; border: 3px solid white; border-radius: 10px; display: flex; flex-flow: row; font-size: 53px; color: white">
+  <div style="flex: 1" class="inblock" onclick="butt.value = 'news'; form.submit();"><img src="{{ news }}" style="height: 99%"></div>
+  <div style="flex: 1" class="inblock" onclick="butt.value = 'messages'; form.submit();"><img src="{{ messages }}" style="height: 99%"></div>
+  <div style="flex: 1" class="inblock" onclick="butt.value = 'friends'; form.submit();"><img src="{{ friends }}" style="height: 99%"></div>
+  <div style="flex: 1" class="inblock" onclick="butt.value = 'home'; form.submit();"><img src="{{ home }}" style="height: 99%"></div>
+</div>
+</center>
+
+<center>
+<div onclick="butt.value = 'user/{{ user_inf[0] }}'; form.submit();" style="width: 60%; height: 10%; border: 3px solid white; border-radius: 25px; display: flex; flex-flow: row; margin-bottom: 30px">
+<img src="{{ user_inf[2] }}" style="width:10%; border-bottom-left-radius: 25px; border-top-left-radius: 25px; position: relative; left: -3px;">
+<div style="display: flex; flex-flow: column; flex: 1"><h2 style="margin: auto">{{ user_inf[1] }}</h2></div></div>
+</center>
+
+<div id="block" style="height:60%; left:20%; width:60%; position: absolute; border: 3px solid white; border-radius: 10px; top: 25%; overflow-x:hidden; overflow-y:scroll;">
+{% for i in chat_messages %}
+{% if i[0] == user_inf[0] %}
+
+<div style="left:5%; width:60%; border: 2px solid white; border-radius: 20px; overflow-x:hidden; padding: 10px; margin: 15px;">
+<h4>{{ i[2] }}</h4>
+<h6 style="position:relative; text-align: right; bottom: 0%; margin-bottom: 0px">{{ i[3] }}</h6>
+
+{% elif i[0] != user_inf[0] %}
+
+<div style="right:5%; width:60%; border: 2px solid white; border-radius: 20px; overflow-x:hidden; padding: 10px; margin: 15px; float: right">
+<h4>{{ i[2] }}</h4>
+<h6 style="position:relative; text-align: right; bottom: 0%; margin-bottom: 0px">{{ i[3] }}</h6>
+
+{% else %}
+
+<p></p>
+
+{% endif %}
+</div>
+
+{% endfor %}
+</div>
+
+<script type="text/javascript">
+  var block = document.getElementById("block");
+  block.scrollTop = block.scrollHeight;
+</script>
+
+<textarea name='message' placeholder="Write your message here" style="width:56%; height:7%; position:absolute; left:20%; font-size: 20px; border-radius: 6px; top: 88%"></textarea>
+<div onclick="butt.value = 'send_message'; form.submit();"><img src="{{ send_message }}" style="left: 76%; height:7%; top: 88%; position:absolute"></div>
+
+</form>
+</body>

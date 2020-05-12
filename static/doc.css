@@ -1,0 +1,25 @@
+p{
+   color: white;
+   font-family: Brush Script MT;
+}
+
+body{
+  background-color:black;
+  color:white;
+  cursor: crosshair
+}
+
+h{
+   color: white;
+   font-family: Brush Script MT;
+}
+
+.inblock
+{
+  height: 100%;
+  text-align: center;
+  border-left: 1px solid white;
+  border-right: 1px solid white;
+  border-radius: 3px;
+  padding: 1px;
+}

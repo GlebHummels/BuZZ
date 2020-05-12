@@ -1,0 +1,56 @@
+<html>
+<head>
+<title>Login</title>
+<link rel="stylesheet" href='{{ a }}'/>
+</head>
+
+<body>
+<form method="post">
+
+<center><img src="{{ buzz_png }}"></center>
+<p align="center">Username:</p>
+<p align="center"><input type="text" name="name" /></p>
+<p align="center">Mail adress:</p>
+<p align="center"><input type="text" name="mail" /></p>
+<p align="center">Password:</p>
+<p align="center"><input type="password" name="password" /></p>
+<p align="center">Date of birth:</p>
+
+<script>
+function renderDaySelector(year, month)
+{
+  document.getElementById('day').innerHTML = "";
+  console.log(year, month);
+  for (var i = 1; i <= [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31][month] + Number(month == 1 && (year % 400 ? year % 100 ? year % 4 ? 0 : 1 : 0 : 1)); ++i)
+    document.getElementById('day').innerHTML += "<option> " + i + " </option>";
+}
+</script>
+
+<center>
+<select id="year" name="year">
+{% for i in range(2006, 1900, -1) %}
+<option>{{ i }}</option>
+{% endfor %}
+</select>
+
+<select id="month" name="month" onchange="renderDaySelector(2006 - document.getElementById('year').selectedIndex, document.getElementById('month').selectedIndex);">
+{% for i in range(12) %}
+<option>{{ i + 1 }}</option>
+{% endfor %}
+</select>
+
+<select id="day" name="day">
+{% for i in range(31) %}
+<option>{{ i + 1 }}</option>
+{% endfor %}
+</select>
+</center>
+
+<br><center>{{ err }}</center></br>
+
+<br></br>
+<center><button type="submit" style="width: 100px; height: 50px; font-size: 24px; font-family: Copperplate;">Go!</button></center>
+
+</form>
+</body>
+</html>

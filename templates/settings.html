@@ -1,0 +1,70 @@
+<html>
+<head>
+  <title>Settings</title>
+<link rel="stylesheet" href='{{ style }}'/>
+</head>
+<body>
+<form id="form" method="post" enctype="multipart/form-data">
+
+
+<center>
+<input id="butt" name="butt" style="visibility: hidden">
+<div style="width: 99%; height: 8%; border: 3px solid white; border-radius: 10px; display: flex; flex-flow: row; font-size: 53px; color: white">
+  <div style="flex: 1" class="inblock" onclick="butt.value = 'news'; form.submit();"><img src="{{ news }}" style="height: 99%"></div>
+  <div style="flex: 1" class="inblock" onclick="butt.value = 'messages'; form.submit();"><img src="{{ messages }}" style="height: 99%"></div>
+  <div style="flex: 1" class="inblock" onclick="butt.value = 'friends'; form.submit();"><img src="{{ friends }}" style="height: 99%"></div>
+  <div style="flex: 1" class="inblock" onclick="butt.value = 'home'; form.submit();"><img src="{{ home }}" style="height: 99%"></button></div>
+</div>
+</center>
+
+
+<p align="center">Username:</p>
+<p align="center"><input type="text" name="name" value='{{ name }}'/></p>
+<p align="center">Mail adress:</p>
+<p align="center"><input type="text" name="mail" value='{{ mail }}'/></p>
+<p align="center">Password:</p>
+<p align="center"><input type="password" name="password" value='{{ password}}'/></p>
+<p align="center">Date of birth:</p>
+
+<script>
+function renderDaySelector(year, month)
+{
+  document.getElementById('day').innerHTML = "";
+  console.log(year, month);
+  for (var i = 1; i <= [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31][month] + Number(month == 1 && (year % 400 ? year % 100 ? year % 4 ? 0 : 1 : 0 : 1)); ++i)
+    document.getElementById('day').innerHTML += "<option> " + i + " </option>";
+}
+</script>
+
+<center>
+<select id="year" name="year">
+{% for i in range(2006, 1900, -1) %}
+<option>{{ i }}</option>
+{% endfor %}
+</select>
+
+<select id="month" name="month" onchange="renderDaySelector(2006 - document.getElementById('year').selectedIndex, document.getElementById('month').selectedIndex);">
+{% for i in range(12) %}
+<option>{{ i + 1 }}</option>
+{% endfor %}
+</select>
+
+<select id="day" name="day">
+{% for i in range(31) %}
+<option>{{ i + 1 }}</option>
+{% endfor %}
+</select>
+</center>
+
+<center>
+<p>Choose your photo(1:1):</p>
+<input type="file" name='file'>
+</center>
+
+<br><center>{{ err }}</center></br>
+
+<center><div onclick="butt.value = 'save'; form.submit();"><img src="{{ save }}" style="width:20%"></button></div></center>
+
+</form>
+</body>
+</html>

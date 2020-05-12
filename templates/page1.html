@@ -1,0 +1,24 @@
+<html>
+<head>
+<title>BuZZ</title>
+<link rel="stylesheet" href='{{ a }}'/>
+</head>
+
+<body>
+<form method="post">
+
+<center><img src="{{ buzz_png }}"></center>
+<p align="center">Username:</p>
+<p align="center"><input type="text" name="name" /></p>
+<p align="center">Password:</p>
+<p align="center"><input type="password" name="password"/></p>	
+
+<p align="center">{{ err }}</p>
+
+<input name="butt" style="visibility: hidden">
+<center><button type="submit" onclick="butt.value = 'go';">Go!</button>
+<button type="submit" onclick="butt.value = 'login';">Login</button></center>
+
+</form>
+</body>
+</html>
