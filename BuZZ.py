@@ -65,7 +65,7 @@ def check_password(user, pas):
         cur = con.cursor()
         result = cur.execute(f"""SELECT PASSWORD FROM Users
                     WHERE NAME = '{user}'""").fetchone()[0]
-        if result == pas:
+        if str(result) == str(pas):
             return True
         return False
     else:
